@@ -83,11 +83,13 @@ The single most important technical choice. Expo sits on top of React Native and
 
 ---
 
-## Phase 7 — Qibla Compass *(stretch goal, do last)*
-**Status: Not Started**
+## Phase 7 — Qibla Compass
+**Status: Complete ✓**
 
-- [ ] Use `expo-sensors` (magnetometer) to point toward the Kaaba
-- [ ] Simple compass UI, only built if time allows
+- [x] `useQibla` hook: magnetometer heading + adhan.js Qibla bearing + low-pass smoothing filter
+- [x] Haversine formula for distance to Mecca in km
+- [x] QiblaScreen: compass ring, rotating gold arrow, cardinal directions, Kaaba icon, distance card
+- [x] Added as third tab in navigation (compass emoji)
 
 ---
 

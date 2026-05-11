@@ -6,6 +6,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useEffect } from 'react';
 import HomeScreen from './src/screens/HomeScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+import QiblaScreen from './src/screens/QiblaScreen';
 import { colors } from './src/constants/theme';
 import { setupNotificationHandler } from './src/services/notifications';
 
@@ -35,6 +36,11 @@ export default function App() {
             name="Home"
             component={HomeScreen}
             options={{ tabBarIcon: ({ color }) => <Text style={{ fontSize: 20, color }}>🕌</Text> }}
+          />
+          <Tab.Screen
+            name="Qibla"
+            component={QiblaScreen}
+            options={{ tabBarIcon: ({ color }) => <Text style={{ fontSize: 20, color }}>🧭</Text> }}
           />
           <Tab.Screen
             name="Settings"
