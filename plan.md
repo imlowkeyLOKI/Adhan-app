@@ -80,6 +80,7 @@ The single most important technical choice. Expo sits on top of React Native and
 ## Phase 8 — Polish & Distribution
 **Status: Not Started**
 
+- [ ] Respect phone's time format — use 12h or 24h based on the device's system setting (use `Intl.DateTimeFormat` with `hour12: undefined` so it auto-detects from locale)
 - [ ] App icon + splash screen
 - [ ] TestFlight beta for iOS friends
 - [ ] Google Play internal testing for Android
