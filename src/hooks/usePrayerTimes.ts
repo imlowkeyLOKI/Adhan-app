@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { getUserLocation, UserLocation } from '../services/location';
 import { calculatePrayerTimes, getNextPrayer, PrayerSchedule, NextPrayer } from '../services/prayerTimes';
 import { getCalculationMethod } from '../services/storage';
+import { syncWidgetData } from '../services/widgetSync';
 import { CalculationMethodKey } from '../constants/prayerConfig';
 
 type State = {
@@ -33,6 +34,7 @@ export function usePrayerTimes() {
       const schedule = calculatePrayerTimes(location.latitude, location.longitude, new Date(), methodKey);
       const nextPrayer = getNextPrayer(schedule);
       setState({ location, schedule, nextPrayer, methodKey, loading: false, error: null });
+      syncWidgetData();
     } catch (e: any) {
       setState(prev => ({ ...prev, loading: false, error: e.message ?? 'Failed to load prayer times' }));
     }

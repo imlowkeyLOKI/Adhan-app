@@ -70,11 +70,16 @@ The single most important technical choice. Expo sits on top of React Native and
 ---
 
 ## Phase 6 — Home Screen Widget
-**Status: Not Started**
+**Status: Complete ✓ (requires EAS Build to activate — cannot test in Expo Go)**
 
-- [ ] Use `react-native-widget-extension` to build a WidgetKit extension showing all 5 prayer times (iOS)
-- [ ] Use `react-native-android-widget` for the equivalent (Android)
-- Note: This phase is the most platform-specific and will take the most time
+- [x] `widgetData` service: builds prayer time payload for widgets
+- [x] `widgetSync` service: writes data to shared storage so iOS widget can read it
+- [x] Android widget: `AdhanWidget.tsx` + `widgetTaskHandler.ts` via `react-native-android-widget`
+- [x] iOS widget: `AdhanWidget.swift` (WidgetKit) reads from App Group UserDefaults
+- [x] `usePrayerTimes` hook calls `syncWidgetData()` on every load to keep widget fresh
+- [ ] Wire `@bacons/apple-targets` config plugin into app.json for iOS build
+- [ ] Register Android widget task handler in index.ts for Android build
+- Note: Both platforms require EAS Build. Add `EAS_NO_VCS=1` if building locally.
 
 ---
 
