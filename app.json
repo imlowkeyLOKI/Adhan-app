@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Adhan",
+    "slug": "adhan-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0f1923"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.adhanapp.adhan",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Adhan needs your location to calculate accurate prayer times for your area."
+      }
+    },
+    "android": {
+      "package": "com.adhanapp.adhan",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0f1923"
+      },
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "RECEIVE_BOOT_COMPLETED",
+        "SCHEDULE_EXACT_ALARM",
+        "USE_EXACT_ALARM"
+      ]
+    },
+    "plugins": [
+      "expo-location",
+      [
+        "expo-notifications",
+        {
+          "sounds": ["./assets/audio/adhan_mishary.mp3", "./assets/audio/adhan_abdul_basit.mp3", "./assets/audio/adhan_makkah.mp3"]
+        }
+      ]
+    ]
+  }
+}

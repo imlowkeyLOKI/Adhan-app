@@ -29,6 +29,10 @@ An iOS app (iPhone only, for now) called the **Adhan App** — a Muslim prayer t
 
 2–4 weeks from May 10, 2026.
 
+## Plan of Action
+
+The full phased implementation plan is in [plan.md](plan.md). Always check it to understand what phase the project is in, what's done, and what's next. Update the status and checkboxes in plan.md as work progresses.
+
 ## How to Work on This Project
 
 - The user is a beginner. Explain decisions clearly and keep instructions actionable.
