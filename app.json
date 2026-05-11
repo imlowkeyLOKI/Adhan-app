@@ -38,7 +38,18 @@
       [
         "expo-notifications",
         {
-          "sounds": ["./assets/audio/adhan_mishary.mp3", "./assets/audio/adhan_abdul_basit.mp3", "./assets/audio/adhan_makkah.mp3"]
+          "sounds": [
+            "./assets/audio/adhan_mishary.wav",
+            "./assets/audio/adhan_abdul_basit.wav",
+            "./assets/audio/adhan_makkah.wav",
+            "./assets/audio/adhan_madinah.wav",
+            "./assets/audio/adhan_sudais.wav",
+            "./assets/audio/adhan_ali_ahmed_mulla.wav",
+            "./assets/audio/adhan_hafiz_mustafa.wav",
+            "./assets/audio/adhan_ibrahim_jibreen.wav",
+            "./assets/audio/adhan_saber_muataz.wav",
+            "./assets/audio/adhan_fares_abbad.wav"
+          ]
         }
       ]
     ]

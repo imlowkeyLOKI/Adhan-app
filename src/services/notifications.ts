@@ -2,6 +2,7 @@ import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 import { calculatePrayerTimes } from './prayerTimes';
 import { PRAYER_NAMES, PRAYER_ORDER, CalculationMethodKey } from '../constants/prayerConfig';
+import { RECITERS, ReciterKey } from '../constants/reciters';
 
 const REMINDER_MINUTES = 15;
 const DAYS_TO_SCHEDULE = 3;
@@ -45,8 +46,9 @@ export async function scheduleAllNotifications(
   latitude: number,
   longitude: number,
   methodKey: CalculationMethodKey,
-  selectedReciter: string = 'adhan_mishary'
+  reciterKey: ReciterKey = 'adhan_mishary'
 ): Promise<void> {
+  const reciter = RECITERS.find(r => r.key === reciterKey) ?? RECITERS[0];
   await Notifications.cancelAllScheduledNotificationsAsync();
 
   const now = new Date();
@@ -79,12 +81,11 @@ export async function scheduleAllNotifications(
       }
 
       // On-time notification with Adhan sound
-      // Custom sound works in a dev build (Phase 4). Falls back to default in Expo Go.
       await Notifications.scheduleNotificationAsync({
         content: {
           title: `${PRAYER_NAMES[prayerKey]}`,
           body: 'Time for prayer',
-          sound: `${selectedReciter}.wav`,
+          sound: reciter.file,
           ...(Platform.OS === 'android' && { channelId: 'adhan' }),
         },
         trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: prayerTime },

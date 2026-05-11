@@ -5,9 +5,10 @@ import {
   cancelAllNotifications,
   getScheduledCount,
 } from '../services/notifications';
-import { getNotificationsEnabled, saveNotificationsEnabled, getCalculationMethod } from '../services/storage';
+import { getNotificationsEnabled, saveNotificationsEnabled, getCalculationMethod, getSelectedReciter, saveSelectedReciter } from '../services/storage';
 import { getUserLocation } from '../services/location';
 import { CalculationMethodKey } from '../constants/prayerConfig';
+import { ReciterKey } from '../constants/reciters';
 
 export function useNotifications() {
   const [enabled, setEnabled] = useState(true);
@@ -32,17 +33,25 @@ export function useNotifications() {
     }
   }
 
-  async function reschedule(methodOverride?: CalculationMethodKey) {
+  async function reschedule(methodOverride?: CalculationMethodKey, reciterOverride?: ReciterKey) {
     try {
-      const [location, methodKey] = await Promise.all([
+      const [location, methodKey, reciterKey] = await Promise.all([
         getUserLocation(),
         methodOverride ? Promise.resolve(methodOverride) : getCalculationMethod(),
+        reciterOverride ? Promise.resolve(reciterOverride) : getSelectedReciter(),
       ]);
-      await scheduleAllNotifications(location.latitude, location.longitude, methodKey);
+      await scheduleAllNotifications(location.latitude, location.longitude, methodKey, reciterKey);
       const count = await getScheduledCount();
       setScheduledCount(count);
     } catch (e) {
       console.warn('Failed to schedule notifications:', e);
+    }
+  }
+
+  async function selectReciter(reciterKey: ReciterKey) {
+    await saveSelectedReciter(reciterKey);
+    if (enabled && permissionGranted) {
+      await reschedule(undefined, reciterKey);
     }
   }
 
@@ -57,5 +66,5 @@ export function useNotifications() {
     }
   }
 
-  return { enabled, permissionGranted, scheduledCount, toggle, reschedule };
+  return { enabled, permissionGranted, scheduledCount, toggle, reschedule, selectReciter };
 }

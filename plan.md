@@ -41,11 +41,19 @@ The single most important technical choice. Expo sits on top of React Native and
 ---
 
 ## Phase 4 — Adhan Audio & Reciter Selection
-**Status: Not Started**
+**Status: Partially Complete — awaiting audio files**
 
-- [ ] Bundle Adhan audio files for 3–5 popular reciters (Mishary Rashid, Abdul Basit, etc.) directly in the app
-- [ ] Wire selected audio file as the notification sound
-- [ ] Add reciter picker in settings
+- [x] Reciter config: Mishary Rashid, Abdul Basit, Makkah
+- [x] Reciter selection persisted via AsyncStorage
+- [x] Selected reciter wired to notification sound
+- [x] Reciter picker in Settings screen
+- [x] app.json configured to bundle .wav files
+- [ ] Add actual audio files to assets/audio/ (see instructions below)
+  - `assets/audio/adhan_mishary.wav`
+  - `assets/audio/adhan_abdul_basit.wav`
+  - `assets/audio/adhan_makkah.wav`
+  - Files must be under 30 seconds for iOS notification sounds
+  - Source: download from Islamic Network, IslamicFinder, or similar
 
 ---
 

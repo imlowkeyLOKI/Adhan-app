@@ -2,17 +2,20 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Switch } from 're
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useState, useEffect } from 'react';
 import { CALCULATION_METHODS, CalculationMethodKey } from '../constants/prayerConfig';
-import { getCalculationMethod, saveCalculationMethod } from '../services/storage';
+import { RECITERS, ReciterKey } from '../constants/reciters';
+import { getCalculationMethod, saveCalculationMethod, getSelectedReciter } from '../services/storage';
 import { useNotifications } from '../hooks/useNotifications';
 import { colors, spacing, fonts } from '../constants/theme';
 
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const [selected, setSelected] = useState<CalculationMethodKey>('NorthAmerica');
-  const { enabled, permissionGranted, scheduledCount, toggle, reschedule } = useNotifications();
+  const [selectedReciter, setSelectedReciter] = useState<ReciterKey>('adhan_mishary');
+  const { enabled, permissionGranted, scheduledCount, toggle, reschedule, selectReciter } = useNotifications();
 
   useEffect(() => {
     getCalculationMethod().then(setSelected);
+    getSelectedReciter().then(setSelectedReciter);
   }, []);
 
   async function selectMethod(key: CalculationMethodKey) {
@@ -21,6 +24,11 @@ export default function SettingsScreen() {
     if (enabled && permissionGranted) {
       await reschedule(key);
     }
+  }
+
+  async function handleSelectReciter(key: ReciterKey) {
+    setSelectedReciter(key);
+    await selectReciter(key);
   }
 
   return (
@@ -62,6 +70,33 @@ export default function SettingsScreen() {
             </Text>
           </View>
         )}
+      </View>
+
+      {/* Reciter */}
+      <Text style={[styles.sectionLabel, { marginTop: spacing.xl }]}>Adhan Reciter</Text>
+      <Text style={styles.sectionSubLabel}>
+        The voice used for the call to prayer notification. Custom audio requires a dev build — Expo Go plays the default sound.
+      </Text>
+      <View style={styles.list}>
+        {RECITERS.map(reciter => {
+          const isSelected = selectedReciter === reciter.key;
+          return (
+            <TouchableOpacity
+              key={reciter.key}
+              style={[styles.row, isSelected && styles.rowSelected]}
+              onPress={() => handleSelectReciter(reciter.key)}
+              activeOpacity={0.7}
+            >
+              <View style={styles.rowText}>
+                <Text style={[styles.methodLabel, isSelected && styles.methodLabelSelected]}>
+                  {reciter.name}
+                </Text>
+                <Text style={styles.methodRegion}>{reciter.description}</Text>
+              </View>
+              {isSelected && <Text style={styles.checkmark}>✓</Text>}
+            </TouchableOpacity>
+          );
+        })}
       </View>
 
       {/* Calculation Method */}
