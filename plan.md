@@ -6,23 +6,23 @@ The single most important technical choice. Expo sits on top of React Native and
 ---
 
 ## Phase 1 — Project Setup
-**Status: In Progress**
+**Status: Complete ✓**
 
-- [ ] Initialize an Expo project with TypeScript
-- [ ] Set up folder structure (screens, components, services, assets)
-- [ ] Push skeleton to GitHub
-- [ ] Install all core dependencies upfront so we don't chase them later
+- [x] Initialize an Expo project with TypeScript
+- [x] Set up folder structure (screens, components, services, assets)
+- [x] Push skeleton to GitHub
+- [x] Install all core dependencies upfront so we don't chase them later
 
 ---
 
 ## Phase 2 — Prayer Times Engine
-**Status: Not Started**
+**Status: Complete ✓**
 
-- [ ] Use the **Adhan.js** library (the gold standard for Islamic prayer time calculation — used by major Muslim apps)
-- [ ] Get the user's location automatically via `expo-location`
-- [ ] Calculate all 5 daily prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha)
-- [ ] Build the main home screen displaying today's times
-- [ ] Add a settings screen to select calculation method (ISNA, MWL, Egyptian, Karachi, etc.) and madhab
+- [x] Use the **Adhan.js** library (the gold standard for Islamic prayer time calculation — used by major Muslim apps)
+- [x] Get the user's location automatically via `expo-location`
+- [x] Calculate all 5 daily prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha)
+- [x] Build the main home screen displaying today's times
+- [x] Add a settings screen to select calculation method (ISNA, MWL, Egyptian, Karachi, etc.) and madhab
 
 ---
 
