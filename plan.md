@@ -27,13 +27,16 @@ The single most important technical choice. Expo sits on top of React Native and
 ---
 
 ## Phase 3 — Push Notifications
-**Status: Not Started**
+**Status: Complete ✓**
 
-- [ ] Use `expo-notifications` to schedule local notifications (no server needed)
-- [ ] For each prayer, schedule two notifications every day:
+- [x] Use `expo-notifications` to schedule local notifications (no server needed)
+- [x] For each prayer, schedule two notifications every day:
   - 15-minute warning
-  - On-time notification with Adhan audio as the sound
-- [ ] Re-schedule notifications nightly for the next day's times
+  - On-time notification with Adhan audio as the sound (custom sound requires dev build — Phase 4)
+- [x] Schedule 3 days ahead (30 notifications, within iOS 64-notification limit)
+- [x] Reschedule automatically when calculation method changes in settings
+- [x] Notification toggle in Settings with permission state feedback
+- [x] Android notification channels configured (adhan + reminder)
 
 ---
 
