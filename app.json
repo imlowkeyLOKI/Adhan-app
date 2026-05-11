@@ -17,7 +17,7 @@
       "bundleIdentifier": "com.adhanapp.adhan",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "Adhan needs your location to calculate accurate prayer times for your area."
-      }
+      },
     },
     "android": {
       "package": "com.adhanapp.adhan",
@@ -30,7 +30,8 @@
         "ACCESS_FINE_LOCATION",
         "RECEIVE_BOOT_COMPLETED",
         "SCHEDULE_EXACT_ALARM",
-        "USE_EXACT_ALARM"
+        "USE_EXACT_ALARM",
+        "ACCESS_NOTIFICATION_POLICY"
       ]
     },
     "plugins": [

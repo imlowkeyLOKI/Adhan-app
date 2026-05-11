@@ -23,6 +23,7 @@ export async function setupNotificationHandler() {
       sound: 'adhan_mishary.wav',
       vibrationPattern: [0, 250, 250, 250],
       lightColor: '#c8a96e',
+      bypassDnd: true,
     });
     await Notifications.setNotificationChannelAsync('reminder', {
       name: 'Prayer Reminders',

@@ -58,13 +58,14 @@ The single most important technical choice. Expo sits on top of React Native and
 ---
 
 ## Phase 5 — Silent Mode Bypass
-**Status: Not Started**
+**Status: Partially Complete**
 
-- **iOS**: Apply for Apple's **Critical Alerts** entitlement — this is the only official way to break through silent mode without a focus mode. It requires a reason submission to Apple but is granted for religious/medical use cases.
-- **Android**: Set notification channel importance to `IMPORTANCE_HIGH` with a full-screen intent — Android is much more permissive here and this works out of the box.
-
-- [ ] Configure Critical Alerts entitlement for iOS
-- [ ] Configure high-importance notification channel for Android
+- [x] Android: Adhan notification channel set to `bypassDnd: true` + `AndroidImportance.MAX`
+- [x] Android: `ACCESS_NOTIFICATION_POLICY` permission added
+- [ ] iOS: Critical Alerts entitlement — skipped for now (not submitting to App Store)
+  - When needed: add `com.apple.developer.usernotifications.critical-alerts` entitlement to app.json
+  - Add `allowCriticalAlerts: true` to permission request
+  - Schedule Adhan with `{ critical: true, volume: 1.0 }` sound object
 
 ---
 
